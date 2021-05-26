@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Rocket } from '../rocket';
 import { RocketsService } from './rockets.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-rocket-list',
@@ -15,11 +15,15 @@ export class RocketListComponent implements OnInit {
 
   rocketList$!: Observable<Rocket[]>;
 
-  constructor(private service: RocketsService, private router: Router) { }
+  constructor(private service: RocketsService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     //this.service.list().subscribe(data => this.rocketList = data);
     
     this.rocketList$ = this.service.list();
+  }
+
+  onEdit(id: any){
+    this.router.navigate(['editar', id], { relativeTo: this.route});
   }
 }

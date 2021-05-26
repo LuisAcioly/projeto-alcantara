@@ -1,28 +1,93 @@
 {
   "rockets": [
     {
-      "id": 1,
-      "name": "starship",
-      "engine": "raptor",
-      "fuel": "Hidrogenio",
+      "name": "Starship",
+      "engine": "Raptor",
+      "fuels": [
+        "Hidrogênio"
+      ],
       "company": "SpaceX",
-      "date": "25/05/2021"
+      "date": "2021-05-21",
+      "id": 1
     },
     {
-      "name": "starship",
-      "engine": "raptor",
-      "fuel": "Hidrogenio",
+      "name": "Starship",
+      "engine": "Raptor",
+      "fuels": [
+        "Hidrogênio"
+      ],
       "company": "SpaceX",
-      "date": "25/05/2021",
+      "date": "2021-05-19",
       "id": 2
     },
     {
-      "name": "starship",
-      "engine": "raptor",
-      "fuel": "Hidrogenio",
+      "name": "Starship",
+      "engine": "Raptor",
+      "fuel": [
+        "Hidrogênio"
+      ],
       "company": "SpaceX",
-      "date": "25/05/2021",
+      "date": "2021-05-20",
       "id": 3
+    },
+    {
+      "name": "Starship",
+      "engine": "Raptor",
+      "fuel": [
+        "Hidrogênio",
+        "Oxigênio"
+      ],
+      "company": "SpaceX",
+      "date": "2021-05-20",
+      "id": 4
+    },
+    {
+      "name": "Starship",
+      "engine": "Raptor",
+      "fuel": [
+        "Hidrogênio"
+      ],
+      "company": "SpaceX",
+      "date": "2021-05-20",
+      "id": 5
+    },
+    {
+      "name": "Starship",
+      "engine": "Scramjet",
+      "fuel": [
+        "Oxigênio"
+      ],
+      "company": "SpaceX",
+      "date": "2021-04-29",
+      "id": 6
+    },
+    {
+      "name": "Starship",
+      "engine": "Raptor",
+      "fuel": [],
+      "company": "SpaceX",
+      "date": "2021-05-20",
+      "id": 7
+    },
+    {
+      "id": 8,
+      "name": "Starship",
+      "engine": "Raptor",
+      "fuel": [
+        "Hidrogênio"
+      ],
+      "company": "SpaceX",
+      "date": "2021-05-19"
+    },
+    {
+      "id": 9,
+      "name": "Starship",
+      "engine": "Raptor",
+      "fuel": [
+        "Hidrogênio"
+      ],
+      "company": "Blue Origin",
+      "date": "2021-05-18"
     }
   ]
 }

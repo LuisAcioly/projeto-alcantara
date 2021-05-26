@@ -6,7 +6,7 @@ import { RocketListComponent } from './rocket-list/rocket-list.component';
 const routes: Routes = [
   {path: '', component: RocketListComponent},
   {path: 'novo', component: RocketFormComponent},
-  {path: ':id', component: RocketFormComponent}
+  {path: 'editar/:id', component: RocketFormComponent}
 ];
 
 @NgModule({

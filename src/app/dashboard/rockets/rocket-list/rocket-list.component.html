@@ -19,12 +19,12 @@
               <th scope="row">{{rocket.id}}</th>
               <td>{{rocket.name}}</td>
               <td>{{rocket.engine}}</td>
-              <td>{{rocket.fuel}}</td>
+              <td >{{rocket.fuel}}</td>
               <td>{{rocket.company}}</td>
               <td>{{rocket.date}}</td>
               <td>
                   <div class="buttons">
-                      <button type="button" class="btn btn-outline-primary btn-sm">
+                      <button type="button" class="btn btn-outline-primary btn-sm" (click)="onEdit(rocket.id)">
                           <i class="bi bi-pencil-square"></i>
                       </button>
                       <button type="button" class="btn btn-outline-danger btn-sm">
