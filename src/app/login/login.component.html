@@ -1,0 +1,23 @@
+<div class="login-content">
+    <div class="form">
+        <div class="logo-holder">
+            <img src='../../assets/cute-rocket-launching.png'/>
+        </div>
+        <div class="error-message" id="login-message" [ngStyle]="{'display': loginError}">
+            <p>Login ou senha estão incorretos.</p>
+        </div>
+        <label for="login">Usuário:</label>
+        <input [(ngModel)]="user.name" name="login" id="login" type="text"/>
+        <div class="error-message" id="user-message" [ngStyle]="{'display': userError}">
+            <p>Usuário é obrigatório.</p>
+        </div>
+        <label for="senha">Senha:</label>
+        <input [(ngModel)]="user.password" name="user.password" id="password" type="password"/>
+        <div class="error-message" id="password-message" [ngStyle]="{'display': passwordError}">
+            <p>Senha é obrigatória.</p>
+        </div>
+        <div class="button">
+            <button type="submit" name="action" (click)="actionLogin()">ENTRAR</button> 
+        </div>
+    </div>
+</div>

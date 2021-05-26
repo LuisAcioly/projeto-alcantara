@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+$Roboto: 'Roboto', sans-serif;
+
+
+.login-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form {
+    width: 25vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: $Roboto;
+    font-weight: bold;
+
+    .logo-holder {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 6vh;
+
+        img {
+            max-width: 25%;
+        }
+    }
+
+    input {
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+    }
+
+    label {
+        float: left;
+        margin-left: 1vw;
+    }
+
+    .button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 1.5vh;
+
+        button {
+            border-radius: 0;
+            border-style: none;
+            background-color: rgb(3, 11, 124);
+            color: white;
+            font-size: 12px;
+            width: 10vw;
+            height: 5vh;
+            cursor: pointer;
+            font-family: $Roboto;
+            font-weight: bold;
+        }
+    }
+
+    .error-message{
+        text-align: center;
+        
+        p {
+            font-size: 7px;
+            color: rgb(255, 0, 0);
+            margin-left: 5px;
+        }
+    }
+
+    #user-message {
+        display: flex;
+        align-items: center;
+    }
+
+    #password-message {
+        display: flex;
+        align-items: center;
+    }
+
+    #login-message {
+        align-items: center;
+    }
+
+}

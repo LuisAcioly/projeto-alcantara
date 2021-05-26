@@ -1,0 +1,28 @@
+{
+  "rockets": [
+    {
+      "id": 1,
+      "name": "starship",
+      "engine": "raptor",
+      "fuel": "Hidrogenio",
+      "company": "SpaceX",
+      "date": "25/05/2021"
+    },
+    {
+      "name": "starship",
+      "engine": "raptor",
+      "fuel": "Hidrogenio",
+      "company": "SpaceX",
+      "date": "25/05/2021",
+      "id": 2
+    },
+    {
+      "name": "starship",
+      "engine": "raptor",
+      "fuel": "Hidrogenio",
+      "company": "SpaceX",
+      "date": "25/05/2021",
+      "id": 3
+    }
+  ]
+}

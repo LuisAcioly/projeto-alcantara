@@ -1,0 +1,46 @@
+<div class="content">
+    <app-side-bar></app-side-bar>
+    <div class="table">
+        <h1 class="mb-3 fs-4">Foguetes</h1>
+        <a routerLink="/dashboard/foguetes/novo" class="btn btn-secondary btn-sm" role="button" aria-disabled="true">Adicionar foguete</a>
+        <table class="table table-sm" *ngIf="rocketList$ | async as rocketList; else loading">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Motor</th>
+              <th scope="col">Combustível</th>
+              <th scope="col">Empresa</th>
+              <th scope="col">Data de lançamento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rocket of rocketList">
+              <th scope="row">{{rocket.id}}</th>
+              <td>{{rocket.name}}</td>
+              <td>{{rocket.engine}}</td>
+              <td>{{rocket.fuel}}</td>
+              <td>{{rocket.company}}</td>
+              <td>{{rocket.date}}</td>
+              <td>
+                  <div class="buttons">
+                      <button type="button" class="btn btn-outline-primary btn-sm">
+                          <i class="bi bi-pencil-square"></i>
+                      </button>
+                      <button type="button" class="btn btn-outline-danger btn-sm">
+                          <i class="bi bi-trash-fill bi-xs"></i>
+                      </button>
+                  </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <ng-template #loading>
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+            </div>
+          </div>
+        </ng-template>
+    </div>
+</div>
+

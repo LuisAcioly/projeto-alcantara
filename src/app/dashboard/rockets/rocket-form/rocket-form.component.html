@@ -1,0 +1,48 @@
+<div class="content">
+    <app-side-bar></app-side-bar>
+    <div class="table">
+        <form class="needs-validation" novalidate [formGroup]="form">
+            <h1 class="title">Nome</h1>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="name" placeholder="Nome" formControlName="name" required>
+                <div class="valid-feedback">
+                  Nome valido!
+                </div>
+              </div>
+              <h1>Motor</h1>
+              <div class="inline">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="Raptor" name="Raptor" class="custom-control-input">
+                    <label class="custom-control-label" for="Raptor">Raptor</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="Scramjet" name="Scramjet" class="custom-control-input">
+                    <label class="custom-control-label" for="Scramjet">Scramjet</label>
+                  </div>
+              </div>
+              <h1>Combustível</h1>
+              <div class="inline">
+                <div class="custom-control custom-checkbox" formArrayName="fuels" *ngFor="let item of getControls(); let i = index">
+                    <label class="custom-control-label">
+                        <input type="checkbox" class="custom-control-input" [formControlName]="i"> {{fuels[i]}}
+                    </label>
+                  </div>
+              </div>
+              <h1 class="title">Empresa</h1>
+              <select class="custom-select w-25">
+                <option selected>Empresas</option>
+                <option value="SpaceX">SpaceX</option>
+                <option value="Blue Origin">Blue Origin</option>
+              </select>
+              <h1>Data de lançamento</h1>
+              <div class="form-group row">
+                <div class="col-10">
+                  <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+              <button type="button" class="btn btn-default" (click)="onCancel()" >Cancelar</button>
+        </form>
+    </div>
+</div>
+
