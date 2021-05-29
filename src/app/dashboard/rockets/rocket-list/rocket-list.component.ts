@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { empty, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Rocket } from '../rocket';
-import { RocketsService } from './rockets.service';
+import { RocketsService } from '../rockets.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
-import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rocket-list',
@@ -40,7 +38,7 @@ export class RocketListComponent implements OnInit {
   }
 
   onRefresh(){
-    console.log("refresh");
     this.rocketList$ = this.service.list();
   }
+
 }

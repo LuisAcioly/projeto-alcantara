@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { map, switchMap, take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Rocket } from '../rocket';
+import { RocketsService } from '../rockets.service';
 
 @Component({
   selector: 'app-rocket-form',
@@ -20,16 +21,9 @@ export class RocketFormComponent implements OnInit {
 
   private readonly API = `${environment.API}rockets`;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute, private service: RocketsService) { }
 
   ngOnInit(): void {
-
-    /* this.route.params
-    .pipe(
-      map((params: any) => params.id),
-      switchMap( id => this.loadById(id))
-    )
-    .subscribe(rocket => this.updateForm(rocket)); */
 
     const rocket = this.route.snapshot.data['rocket'];
 
@@ -41,10 +35,6 @@ export class RocketFormComponent implements OnInit {
       company: [rocket.company, [Validators.required]],
       date: [rocket.date, [Validators.required]],
     });
-  }
-
-  loadById(id: any) {
-    return this.http.get(`${this.API}/${id}`).pipe(take(1));
   }
 
   buildFuels() {
@@ -59,17 +49,6 @@ export class RocketFormComponent implements OnInit {
       { value: 'scramjet', desc: 'Scramjet' },
     ]
   }
-
-  /* updateForm(rocket: any){
-    this.form.patchValue({
-      id: rocket.id,
-      name: rocket.name,
-      engine: rocket.engine,
-      fuel: rocket.fuel,
-      company: rocket.company,
-      date: rocket.date,
-    })
-  } */
 
   getControls() {
     return (this.form.get('fuel') as FormArray).controls;
@@ -98,17 +77,8 @@ export class RocketFormComponent implements OnInit {
 
   save(rocket: any){
     if (rocket.id) {
-      return this.update(rocket);
+      return this.service.update(rocket);
     }
-    return this.create(rocket);
-  }
-
-  update(rocket: any){
-    console.log(rocket.id)
-    return this.http.put(`${this.API}/${rocket.id}`, rocket).pipe(take(1));
-  }
-
-  create(rocket: any){
-    return this.http.post(this.API, rocket).pipe(take(1));
+    return this.service.create(rocket);
   }
 }
