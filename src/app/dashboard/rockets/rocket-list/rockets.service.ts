@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Rocket } from '../rocket';
-import { delay, tap } from 'rxjs/operators';
+import { delay, take, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
@@ -19,5 +19,10 @@ export class RocketsService {
         delay(2000),
         tap(console.log)
       );
+  }
+
+  remove(id: any){
+    console.log(id);
+    return this.http.delete(`${this.API}/${id}`).pipe(take(1));
   }
 }

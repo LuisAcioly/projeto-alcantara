@@ -6,7 +6,6 @@
         <table class="table table-sm" *ngIf="rocketList$ | async as rocketList; else loading">
           <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">Nome</th>
               <th scope="col">Motor</th>
               <th scope="col">Combustível</th>
@@ -16,7 +15,6 @@
           </thead>
           <tbody>
             <tr *ngFor="let rocket of rocketList">
-              <th scope="row">{{rocket.id}}</th>
               <td>{{rocket.name}}</td>
               <td>{{rocket.engine}}</td>
               <td >{{rocket.fuel}}</td>
@@ -27,7 +25,7 @@
                       <button type="button" class="btn btn-outline-primary btn-sm" (click)="onEdit(rocket.id)">
                           <i class="bi bi-pencil-square"></i>
                       </button>
-                      <button type="button" class="btn btn-outline-danger btn-sm">
+                      <button type="button" class="btn btn-outline-danger btn-sm" (click)="onDelete(rocket)">
                           <i class="bi bi-trash-fill bi-xs"></i>
                       </button>
                   </div>

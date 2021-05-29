@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { take } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Rocket } from '../rocket';
 
@@ -24,26 +24,22 @@ export class RocketFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let register = null;
+    /* this.route.params
+    .pipe(
+      map((params: any) => params.id),
+      switchMap( id => this.loadById(id))
+    )
+    .subscribe(rocket => this.updateForm(rocket)); */
 
-    this.route.params.subscribe((params: any) => {
-        const id = params.id;
-        const rocket$ = this.loadById(id);
-        rocket$.subscribe( rocket => {
-          register = rocket;
-          this.updateForm(rocket)
-        });
-      });
-
-      console.log(register);
+    const rocket = this.route.snapshot.data['rocket'];
 
     this.form = this.fb.group({
-      id: [null],
-      name: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      engine: [null, [Validators.required]],
+      id: [rocket.id],
+      name: [rocket.name, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      engine: [rocket.engine, [Validators.required]],
       fuel: this.buildFuels(),
-      company: [null, [Validators.required]],
-      date: [null, [Validators.required]],
+      company: [rocket.company, [Validators.required]],
+      date: [rocket.date, [Validators.required]],
     });
   }
 
@@ -64,7 +60,7 @@ export class RocketFormComponent implements OnInit {
     ]
   }
 
-  updateForm(rocket: any){
+  /* updateForm(rocket: any){
     this.form.patchValue({
       id: rocket.id,
       name: rocket.name,
@@ -73,7 +69,7 @@ export class RocketFormComponent implements OnInit {
       company: rocket.company,
       date: rocket.date,
     })
-  }
+  } */
 
   getControls() {
     return (this.form.get('fuel') as FormArray).controls;
@@ -91,14 +87,8 @@ export class RocketFormComponent implements OnInit {
 
     console.log(valueSubmit)
 
-    if (this.form.valid) {
-      this.http
-        .post<any>(this.API, valueSubmit)
-        .subscribe(
-          data => {
-            console.log(data);
-          },
-        );
+    if (this.form.valid && valueSubmit.fuel !== [false, false] ) {
+      this.save(valueSubmit).subscribe(() => {console.log(this.form.value)});
       alert("Sucesso!");
     }
     else {
@@ -106,7 +96,19 @@ export class RocketFormComponent implements OnInit {
     }
   }
 
-  onCancel() {
+  save(rocket: any){
+    if (rocket.id) {
+      return this.update(rocket);
+    }
+    return this.create(rocket);
+  }
 
+  update(rocket: any){
+    console.log(rocket.id)
+    return this.http.put(`${this.API}/${rocket.id}`, rocket).pipe(take(1));
+  }
+
+  create(rocket: any){
+    return this.http.post(this.API, rocket).pipe(take(1));
   }
 }

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { empty, Observable } from 'rxjs';
 import { Rocket } from '../rocket';
 import { RocketsService } from './rockets.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rocket-list',
@@ -24,6 +26,21 @@ export class RocketListComponent implements OnInit {
   }
 
   onEdit(id: any){
+    var rocket = new Rocket();
+    console.log(rocket);
+
     this.router.navigate(['editar', id], { relativeTo: this.route});
+  }
+
+  onDelete(rocket: any){
+    this.service.remove(rocket.id).subscribe(
+      success => {
+        this.onRefresh();
+      });
+  }
+
+  onRefresh(){
+    console.log("refresh");
+    this.rocketList$ = this.service.list();
   }
 }
