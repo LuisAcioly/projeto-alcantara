@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+$Roboto: 'Roboto', sans-serif;
+
+.content {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table{
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 10vh;
+    font-size: 10px;
+
+    .inline{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .btn-primary {
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 15px;
+        margin-bottom: 0;
+    }
+
+    .title{
+        margin-bottom: 3vh;
+    }
+
+    .form-control, .custom-select {
+        margin-bottom: 3vh;
+    }
+
+    input {
+        font-size: 10px;
+        height: 20px;
+    }
+
+    input[type=checkbox] {
+        vertical-align: middle;
+    }
+
+    .form-control {
+        width: 40vw;
+    }
+
+    .custom-radio, .custom-checkbox {
+        display: flex;
+        align-items: center;
+        margin-top: 0;
+
+        .custom-control-label{
+            margin-left: 1vw;
+        }
+    }
+}
+

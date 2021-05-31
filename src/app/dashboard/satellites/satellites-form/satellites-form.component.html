@@ -1,0 +1,25 @@
+<div class="content">
+    <app-side-bar></app-side-bar>
+    <div class="table">
+        <form class="needs-validation" novalidate [formGroup]="form">
+            <h1 class="title">Nome</h1>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="name" placeholder="Nome" formControlName="name" required>
+                <div class="valid-feedback">
+                  Nome valido!
+                </div>
+              </div>
+              <h1>Tipo</h1>
+              <div class="inline">
+                <div class="custom-control custom-radio custom-control-inline" *ngFor="let item of types">
+                    <label class="custom-control-label">
+                        <input type="radio" formControlName="type" class="custom-control-input" value="{{item}}"> {{item}}
+                    </label>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+        </form>
+    </div>
+</div>
+
+

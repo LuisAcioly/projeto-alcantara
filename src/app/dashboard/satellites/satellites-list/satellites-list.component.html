@@ -1,0 +1,39 @@
+<div class="content">
+    <app-side-bar></app-side-bar>
+    <div class="table">
+        <h1 class="mb-3 fs-4">Satélites</h1>
+        <a routerLink="/dashboard/satelites/novo" class="btn btn-secondary btn-sm" role="button" aria-disabled="true">Adicionar satélite</a>
+        <table class="table table-sm" *ngIf="satelliteList$ | async as satelliteList; else loading">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let satellite of satelliteList">
+              <td>{{satellite.name}}</td>
+              <td>{{satellite.type}}</td>
+              <td>
+                  <div class="buttons">
+                      <button type="button" class="btn btn-outline-primary btn-sm" (click)="onEdit(satellite.id)">
+                          <i class="bi bi-pencil-square"></i>
+                      </button>
+                      <button type="button" class="btn btn-outline-danger btn-sm" (click)="onDelete(satellite)">
+                          <i class="bi bi-trash-fill bi-xs"></i>
+                      </button>
+                  </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <ng-template #loading>
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+            </div>
+          </div>
+        </ng-template>
+    </div>
+</div>
+
+

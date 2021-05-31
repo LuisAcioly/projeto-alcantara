@@ -31,5 +31,17 @@
       "date": "2021-05-20",
       "id": 5
     }
+  ],
+  "satellites": [
+    {
+      "id": 1,
+      "name": "Starlink 47AB24",
+      "type": "Comunicação "
+    },
+    {
+      "id": 3,
+      "name": "Amazonia Link",
+      "type": "Meteorológico"
+    }
   ]
 }

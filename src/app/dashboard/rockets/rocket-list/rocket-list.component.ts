@@ -18,8 +18,6 @@ export class RocketListComponent implements OnInit {
   constructor(private service: RocketsService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    //this.service.list().subscribe(data => this.rocketList = data);
-    
     this.rocketList$ = this.service.list();
   }
 
